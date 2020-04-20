@@ -79,7 +79,7 @@ export const Form = styled(UnForm)`
   button {
     margin-top: 15px;
     border: none;
-    background: #7d40e7;
+    background: #4d85ee;
     border-radius: 4px;
     font-size: 16px;
     padding: 12px;
@@ -89,7 +89,7 @@ export const Form = styled(UnForm)`
     height: 42px;
 
     &:hover {
-      background: ${darken(0.2, '#7d40e7')};
+      background: ${darken(0.2, '#4D85EE')};
     }
 
     svg {
