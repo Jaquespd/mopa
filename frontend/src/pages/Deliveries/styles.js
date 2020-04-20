@@ -16,7 +16,7 @@ export const Container = styled.div`
       color: #fff;
       font-weight: bold;
       font-size: 14px;
-      background: #7d40e7;
+      background: #4d85ee;
       transition: background 300ms;
       border-radius: 4px;
       text-transform: uppercase;
@@ -32,7 +32,7 @@ export const Container = styled.div`
       }
 
       &:hover {
-        background: ${darken(0.2, '#7D40E7')};
+        background: ${darken(0.2, '#4D85EE')};
       }
     }
   }

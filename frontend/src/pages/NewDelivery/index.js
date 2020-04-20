@@ -124,7 +124,7 @@ export default function NewDelivery({ match }) {
           <MdKeyboardArrowLeft size={24} />
           Voltar
         </Button>
-        <Button color="#7D40E7" type="submit">
+        <Button color="#4D85EE" type="submit">
           <MdDone size={24} />
           Salvar
         </Button>
