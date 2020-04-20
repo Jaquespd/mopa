@@ -1,7 +1,6 @@
 import * as Yup from 'yup';
 import { Op } from 'sequelize';
 
-import Deliveryman from '../models/Deliveryman';
 import Employee from '../models/Employee';
 import File from '../models/File';
 

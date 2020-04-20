@@ -7,6 +7,8 @@ import Deliveryman from '../app/models/Deliveryman';
 import Delivery from '../app/models/Delivery';
 import Problem from '../app/models/Problem';
 import Employee from '../app/models/Employee';
+import Service from '../app/models/Service';
+import CustomerService from '../app/models/CustomerService';
 
 import databaseConfig from '../config/database';
 
@@ -18,6 +20,8 @@ const models = [
   Delivery,
   Problem,
   Employee,
+  Service,
+  CustomerService,
 ];
 class Database {
   constructor() {
