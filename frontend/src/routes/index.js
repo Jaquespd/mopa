@@ -6,6 +6,7 @@ import SignIn from '~/pages/SignIn';
 import Deliveries from '~/pages/Deliveries';
 import NewDelivery from '~/pages/NewDelivery';
 import Deliverymen from '~/pages/Deliverymen';
+import Employees from '~/pages/Employees';
 import NewDeliveryman from '~/pages/NewDeliveryman';
 import Recipients from '~/pages/Recipients';
 import NewRecipient from '~/pages/NewRecipient';
@@ -50,6 +51,12 @@ export default function Routes() {
         component={Deliverymen}
         isPrivate
         locationName="deliverymen"
+      />
+      <Route
+        path="/employees"
+        component={Employees}
+        isPrivate
+        locationName="employees"
       />
       <Route
         path="/recipients/new"

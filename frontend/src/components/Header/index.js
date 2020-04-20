@@ -33,6 +33,9 @@ export default function Header({ locationName = undefined }) {
       <Link data-name="problems" to="/problems">
         Problemas
       </Link>
+      <Link data-name="employees" to="/employees">
+        Funcionários
+      </Link>
 
       <div>
         <strong>Admin FastFeet</strong>
