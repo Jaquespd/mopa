@@ -9,8 +9,8 @@ import Deliverymen from '~/pages/Deliverymen';
 import Employees from '~/pages/Employees';
 import NewDeliveryman from '~/pages/NewDeliveryman';
 import Recipients from '~/pages/Recipients';
-import NewRecipient from '~/pages/NewRecipient';
 import Problems from '~/pages/Problems';
+import NewRecipient from '~/pages/NewRecipient';
 
 export default function Routes() {
   return (
