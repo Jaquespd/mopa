@@ -6,6 +6,7 @@ import authMiddleware from './app/middlewares/auth';
 import RecipientController from './app/controllers/RecipientController';
 import FileController from './app/controllers/FileController';
 import DeliverymanController from './app/controllers/DeliverymanController';
+import EmployeeController from './app/controllers/EmployeeController';
 import DeliveryController from './app/controllers/DeliveryController';
 import TakeOutController from './app/controllers/TakeOutController';
 import CompleteController from './app/controllers/CompleteController';
@@ -58,5 +59,11 @@ routes.delete('/delivery/:id', DeliveryController.delete);
 
 routes.get('/problems', ProblemController.index);
 routes.delete('/problem/:id/cancel-delivery', ProblemController.delete);
+
+routes.get('/employees', EmployeeController.index);
+routes.get('/employees/:id', EmployeeController.show);
+routes.post('/employees', EmployeeController.store);
+routes.put('/employees/:id', EmployeeController.update);
+routes.delete('/employees/:id', EmployeeController.delete);
 
 export default routes;
