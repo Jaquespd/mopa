@@ -10,6 +10,7 @@ import NewDeliveryman from '~/pages/NewDeliveryman';
 import Employees from '~/pages/Employees';
 import NewEmployee from '~/pages/NewEmployee';
 import Recipients from '~/pages/Recipients';
+import Services from '~/pages/Services';
 import Problems from '~/pages/Problems';
 import NewRecipient from '~/pages/NewRecipient';
 
@@ -88,6 +89,12 @@ export default function Routes() {
         component={Recipients}
         isPrivate
         locationName="recipients"
+      />
+      <Route
+        path="/services"
+        component={Services}
+        isPrivate
+        locationName="services"
       />
       <Route
         path="/problems"

@@ -25,16 +25,19 @@ export default function Header({ locationName = undefined }) {
         Encomendas
       </Link>
       <Link data-name="deliverymen" to="/deliverymen">
-        Entregadores
+        .
       </Link>
       <Link data-name="recipients" to="/recipients">
-        Destinatários
+        .
       </Link>
       <Link data-name="problems" to="/problems">
         Problemas
       </Link>
       <Link data-name="employees" to="/employees">
         Funcionários
+      </Link>
+      <Link data-name="services" to="/services">
+        Serviços
       </Link>
 
       <div>

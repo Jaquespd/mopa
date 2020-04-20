@@ -10,7 +10,7 @@ export const Container = styled.div`
 `;
 
 export const Text = styled.span`
-  color: #7d40e7;
+  color: #4d85ee;
   font-size: ${(props) => props.size || 14}px;
   text-transform: uppercase;
 
@@ -29,7 +29,7 @@ export const Button = styled.button.attrs({
   type: 'button',
 })`
   border: none;
-  background: #7d40e7;
+  background: #4d85ee;
   color: #fff;
   font-weight: bold;
   font-size: 12px;
@@ -49,6 +49,6 @@ export const Button = styled.button.attrs({
   }
 
   &:not([disabled]):hover {
-    background: ${darken(0.2, '#7D40E7')};
+    background: ${darken(0.2, '#4D85EE')};
   }
 `;
