@@ -6,8 +6,9 @@ import SignIn from '~/pages/SignIn';
 import Deliveries from '~/pages/Deliveries';
 import NewDelivery from '~/pages/NewDelivery';
 import Deliverymen from '~/pages/Deliverymen';
-import Employees from '~/pages/Employees';
 import NewDeliveryman from '~/pages/NewDeliveryman';
+import Employees from '~/pages/Employees';
+import NewEmployee from '~/pages/NewEmployee';
 import Recipients from '~/pages/Recipients';
 import Problems from '~/pages/Problems';
 import NewRecipient from '~/pages/NewRecipient';
@@ -51,6 +52,18 @@ export default function Routes() {
         component={Deliverymen}
         isPrivate
         locationName="deliverymen"
+      />
+      <Route
+        path="/employees/new"
+        component={NewEmployee}
+        isPrivate
+        locationName="employees"
+      />
+      <Route
+        path="/employees/edit/:id"
+        component={NewEmployee}
+        isPrivate
+        locationName="employees"
       />
       <Route
         path="/employees"
