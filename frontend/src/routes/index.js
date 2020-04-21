@@ -10,9 +10,10 @@ import NewDeliveryman from '~/pages/NewDeliveryman';
 import Employees from '~/pages/Employees';
 import NewEmployee from '~/pages/NewEmployee';
 import Recipients from '~/pages/Recipients';
-import Services from '~/pages/Services';
-import Problems from '~/pages/Problems';
 import NewRecipient from '~/pages/NewRecipient';
+import Services from '~/pages/Services';
+import NewService from '~/pages/NewService';
+import Problems from '~/pages/Problems';
 
 export default function Routes() {
   return (
@@ -89,6 +90,18 @@ export default function Routes() {
         component={Recipients}
         isPrivate
         locationName="recipients"
+      />
+      <Route
+        path="/services/new"
+        component={NewService}
+        isPrivate
+        locationName="services"
+      />
+      <Route
+        path="/services/edit/:id"
+        component={NewService}
+        isPrivate
+        locationName="services"
       />
       <Route
         path="/services"

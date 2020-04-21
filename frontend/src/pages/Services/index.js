@@ -117,7 +117,7 @@ export default function Services() {
           <tr>
             <th>ID</th>
             <th>Cliente</th>
-            <th>Tipo</th>
+            <th>Serviço</th>
             <th>Ações</th>
           </tr>
         </thead>
