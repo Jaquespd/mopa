@@ -4,9 +4,9 @@ class CustomerService extends Model {
   static init(sequelize) {
     super.init(
       {
-        product: {
+        car: {
           type: Sequelize.STRING,
-          allowNull: false,
+          allowNull: true,
         },
         canceled_at: {
           type: Sequelize.DATE,

@@ -28,9 +28,9 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
       },
-      product: {
+      car: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       canceled_at: {
         type: Sequelize.DATE,

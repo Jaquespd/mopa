@@ -9,6 +9,7 @@ import FileController from './app/controllers/FileController';
 import DeliverymanController from './app/controllers/DeliverymanController';
 import EmployeeController from './app/controllers/EmployeeController';
 import DeliveryController from './app/controllers/DeliveryController';
+import CustomerServiceController from './app/controllers/CustomerServiceController';
 import TakeOutController from './app/controllers/TakeOutController';
 import CompleteController from './app/controllers/CompleteController';
 import DeliveryStatusController from './app/controllers/DeliveryStatusController';
@@ -72,5 +73,11 @@ routes.post('/services', ServiceController.store);
 routes.put('/services/:id', ServiceController.update);
 routes.get('/services/:id', ServiceController.show);
 routes.delete('/services/:id', ServiceController.delete);
+
+routes.get('/customerservices', CustomerServiceController.index);
+routes.post('/customerservices', CustomerServiceController.store);
+routes.put('/customerservices/:id', CustomerServiceController.update);
+routes.get('/customerservices/:id', CustomerServiceController.show);
+routes.delete('/customerservices/:id', CustomerServiceController.delete);
 
 export default routes;
