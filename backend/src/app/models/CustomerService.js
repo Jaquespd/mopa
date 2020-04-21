@@ -43,7 +43,10 @@ class CustomerService extends Model {
       foreignKey: 'signature_id',
       as: 'signature',
     });
-    // this.hasMany(models.Problem, { foreignKey: 'delivery_id', as: 'problems' });
+    this.hasMany(models.ProblemCustomerService, {
+      foreignKey: 'customer_service_id',
+      as: 'problems',
+    });
   }
 }
 

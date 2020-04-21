@@ -14,6 +14,7 @@ import TakeOutController from './app/controllers/TakeOutController';
 import CompleteController from './app/controllers/CompleteController';
 import DeliveryStatusController from './app/controllers/DeliveryStatusController';
 import ProblemController from './app/controllers/ProblemController';
+import ProblemCustomerServiceController from './app/controllers/ProblemCustomerServiceController';
 
 const routes = new Router();
 
@@ -38,6 +39,15 @@ routes.put(
 routes.post('/delivery/:delivery_id/problems', ProblemController.store);
 routes.get('/delivery/:delivery_id/problems', ProblemController.show);
 
+routes.post(
+  '/customerservice/:customerService_id/problems',
+  ProblemCustomerServiceController.store
+);
+routes.get(
+  '/customerservice/:customerService_id/problems',
+  ProblemCustomerServiceController.show
+);
+
 routes.post('/files', upload.single('file'), FileController.store);
 
 routes.use(authMiddleware);
@@ -61,6 +71,13 @@ routes.delete('/delivery/:id', DeliveryController.delete);
 
 routes.get('/problems', ProblemController.index);
 routes.delete('/problem/:id/cancel-delivery', ProblemController.delete);
+
+routes.get('/problemscustomerservice', ProblemCustomerServiceController.index);
+// possivel erro aqui, ver se está cancelando o certo
+routes.delete(
+  '/problem/:id/cancel-customerservice',
+  ProblemCustomerServiceController.delete
+);
 
 routes.get('/employees', EmployeeController.index);
 routes.get('/employees/:id', EmployeeController.show);

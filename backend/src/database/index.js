@@ -9,6 +9,7 @@ import Problem from '../app/models/Problem';
 import Employee from '../app/models/Employee';
 import Service from '../app/models/Service';
 import CustomerService from '../app/models/CustomerService';
+import ProblemCustomerService from '../app/models/ProblemCustomerService';
 
 import databaseConfig from '../config/database';
 
@@ -22,6 +23,7 @@ const models = [
   Employee,
   Service,
   CustomerService,
+  ProblemCustomerService,
 ];
 class Database {
   constructor() {
