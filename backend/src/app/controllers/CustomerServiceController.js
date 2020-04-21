@@ -17,7 +17,7 @@ class CustomerServiceController {
     const where = {};
 
     if (q) {
-      where.product = { [Op.iLike]: `%${q}%` };
+      where.car = { [Op.iLike]: `%${q}%` };
     }
 
     const total = await CustomerService.count({ where });

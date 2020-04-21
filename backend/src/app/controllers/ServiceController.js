@@ -27,13 +27,7 @@ class ServiceController {
         {
           model: CustomerService,
           as: 'customer_services',
-          attributes: [
-            'id',
-            'product',
-            'start_date',
-            'end_date',
-            'canceled_at',
-          ],
+          attributes: ['id', 'car', 'start_date', 'end_date', 'canceled_at'],
         },
       ],
     });
