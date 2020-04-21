@@ -7,6 +7,13 @@ const letterAvatar = [
   '#FCFCEF',
 ];
 
+const customerServiceStatus = {
+  delivered: '#DFF0DF',
+  pending: '#F0F0DF',
+  takeout: '#BAD2FF',
+  canceled: '#FAB0B0',
+};
+
 const deliveryStatus = {
   delivered: '#DFF0DF',
   pending: '#F0F0DF',
@@ -14,4 +21,4 @@ const deliveryStatus = {
   canceled: '#FAB0B0',
 };
 
-export { letterAvatar, deliveryStatus };
+export { letterAvatar, customerServiceStatus, deliveryStatus };

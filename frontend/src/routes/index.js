@@ -4,7 +4,9 @@ import Route from './Route';
 
 import SignIn from '~/pages/SignIn';
 import Deliveries from '~/pages/Deliveries';
+import CustomerServices from '~/pages/CustomerServices';
 import NewDelivery from '~/pages/NewDelivery';
+import NewCustomerService from '~/pages/NewCustomerService';
 import Deliverymen from '~/pages/Deliverymen';
 import NewDeliveryman from '~/pages/NewDeliveryman';
 import Employees from '~/pages/Employees';
@@ -36,6 +38,24 @@ export default function Routes() {
         component={Deliveries}
         isPrivate
         locationName="deliveries"
+      />
+      <Route
+        path="/customerservices/new"
+        component={NewCustomerService}
+        isPrivate
+        locationName="customerservices"
+      />
+      <Route
+        path="/customerservices/edit/:id"
+        component={NewCustomerService}
+        isPrivate
+        locationName="customerservices"
+      />
+      <Route
+        path="/customerservices"
+        component={CustomerServices}
+        isPrivate
+        locationName="customerservices"
       />
       <Route
         path="/deliverymen/new"

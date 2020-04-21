@@ -33,11 +33,14 @@ export default function Header({ locationName = undefined }) {
       <Link data-name="problems" to="/problems">
         Problemas
       </Link>
-      <Link data-name="employees" to="/employees">
-        Funcionários
+      <Link data-name="customerservices" to="/customerservices">
+        Atendimentos
       </Link>
       <Link data-name="services" to="/services">
         Serviços
+      </Link>
+      <Link data-name="employees" to="/employees">
+        Funcionários
       </Link>
 
       <div>
