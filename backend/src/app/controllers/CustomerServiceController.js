@@ -30,8 +30,9 @@ class CustomerServiceController {
       include: [
         {
           model: Service,
-          as: 'service',
+          as: 'services',
           attributes: [
+            'id',
             'customer',
             'city',
             'local',
@@ -42,7 +43,7 @@ class CustomerServiceController {
         },
         {
           model: Employee,
-          as: 'employee',
+          as: 'employees',
           attributes: ['id', 'name', 'role', 'phone', 'email'],
           include: [
             {
@@ -79,7 +80,7 @@ class CustomerServiceController {
       include: [
         {
           model: Service,
-          as: 'service',
+          as: 'services',
           attributes: [
             'id',
             'customer',
@@ -92,7 +93,7 @@ class CustomerServiceController {
         },
         {
           model: Employee,
-          as: 'employee',
+          as: 'employees',
           attributes: ['id', 'name', 'role', 'phone', 'email'],
           include: [
             {
@@ -124,8 +125,8 @@ class CustomerServiceController {
 
   async store(req, res) {
     const schema = Yup.object().shape({
-      service_id: Yup.number().required(),
-      employee_id: Yup.number().required(),
+      services_id: Yup.array(),
+      employees_id: Yup.array(),
       car: Yup.string().required(),
     });
 
@@ -133,38 +134,34 @@ class CustomerServiceController {
       return res.status(400).json({ error: 'Validation Fails' });
     }
 
-    const { service_id, employee_id, car } = req.body;
+    const { services_id, employees_id, car } = req.body;
 
-    const service = await Service.findByPk(service_id);
-    const employee = await Employee.findByPk(employee_id);
-
-    if (!service) {
-      return res.status(400).json({ error: 'Service does not exists' });
-    }
-
-    if (!employee) {
-      return res.status(400).json({ error: 'Employee does not exists' });
-    }
-
-    const { id } = await CustomerService.create({
-      service_id,
-      employee_id,
+    const customerService = await CustomerService.create({
       car,
     });
+
+    if (services_id) {
+      await customerService.addService(services_id);
+    }
+
+    if (employees_id) {
+      await customerService.addEmployee(employees_id);
+    }
+
     // AJUSTAR O EMAIL DE NOTIFICAÇÃO
-    await Queue.add(NewDeliveryMail.key, {
-      employee,
-      car,
-      service,
-    });
+    // await Queue.add(NewDeliveryMail.key, {
+    //   employee,
+    //   car,
+    //   service,
+    // });
 
-    return res.json({ id, service_id, employee_id, car });
+    return res.json(customerService);
   }
 
   async update(req, res) {
     const schema = Yup.object().shape({
-      service_id: Yup.number(),
-      employee_id: Yup.number(),
+      service_id: Yup.array(),
+      employee_id: Yup.array(),
       car: Yup.string(),
       start_date: Yup.date(),
       end_date: Yup.date(),
@@ -175,25 +172,20 @@ class CustomerServiceController {
     }
     // check if customerService exists
     const customerService = await CustomerService.findByPk(req.params.id);
+
     if (!customerService) {
       return res.status(400).json({ error: 'CustomerService does not exists' });
     }
 
-    const { service_id, employee_id } = req.body;
+    const { services_id, employees_id, car } = req.body;
 
-    // check if service exists
-    if (service_id && !(await Service.findByPk(service_id))) {
-      return res.status(400).json({ error: 'Service does not exists' });
-    }
+    await customerService.update({ car });
 
-    // check if employee exists
-    if (employee_id && !(await Employee.findByPk(employee_id))) {
-      return res.status(400).json({ error: 'Employee does not exists' });
-    }
+    await customerService.setServices(services_id);
 
-    const customerServiceUpdated = await customerService.update(req.body);
+    await customerService.setEmployees(employees_id);
 
-    return res.json(customerServiceUpdated);
+    return res.json(customerService);
   }
 
   async delete(req, res) {

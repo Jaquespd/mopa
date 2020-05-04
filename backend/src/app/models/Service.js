@@ -23,9 +23,9 @@ class Service extends Model {
   }
 
   static associate(models) {
-    this.hasMany(models.CustomerService, {
-      //talvez dê errado, era customer_service_id e customer_service
-      foreignKey: 'service_id',
+    this.belongsToMany(models.CustomerService, {
+      through: 'cs_services',
+      foreignKey: 'services_id',
       as: 'customer_services',
     });
   }

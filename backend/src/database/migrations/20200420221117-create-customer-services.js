@@ -7,20 +7,6 @@ module.exports = {
         primaryKey: true,
         autoIncrement: true,
       },
-      service_id: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        references: { model: 'services', key: 'id' },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
-      },
-      employee_id: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        references: { model: 'employees', key: 'id' },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL', //Ver se deve colocar 'NO ACTION'
-      },
       signature_id: {
         type: Sequelize.INTEGER,
         allowNull: true,

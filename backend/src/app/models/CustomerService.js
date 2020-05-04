@@ -31,13 +31,15 @@ class CustomerService extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.Service, {
-      foreignKey: 'service_id',
-      as: 'service',
+    this.belongsToMany(models.Service, {
+      through: 'cs_services',
+      foreignKey: 'customer_service_id',
+      as: 'services',
     });
-    this.belongsTo(models.Employee, {
-      foreignKey: 'employee_id',
-      as: 'employee',
+    this.belongsToMany(models.Employee, {
+      through: 'cs_employees',
+      foreignKey: 'customer_service_id',
+      as: 'employees',
     });
     this.belongsTo(models.File, {
       foreignKey: 'signature_id',
