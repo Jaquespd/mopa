@@ -17,22 +17,10 @@ export default function Header({ locationName = undefined }) {
 
   return (
     <Container locationName={locationName}>
-      <Link to="/deliveries">
-        <img src={logo} alt="FastFeet" />
+      <Link to="/customerservices">
+        <img src={logo} alt="MOPA" />
       </Link>
 
-      <Link data-name="deliveries" to="/deliveries">
-        Encomendas
-      </Link>
-      <Link data-name="deliverymen" to="/deliverymen">
-        .
-      </Link>
-      <Link data-name="recipients" to="/recipients">
-        .
-      </Link>
-      <Link data-name="problems" to="/problems">
-        Problemas
-      </Link>
       <Link data-name="customerservices" to="/customerservices">
         Atendimentos
       </Link>
@@ -42,9 +30,12 @@ export default function Header({ locationName = undefined }) {
       <Link data-name="employees" to="/employees">
         Funcionários
       </Link>
+      <Link data-name="problemscustomerservices" to="/problemscustomerservices">
+        Problemas
+      </Link>
 
       <div>
-        <strong>Admin FastFeet</strong>
+        <strong>Admin MOPA</strong>
         <button type="button" onClick={handleSignOut}>
           Sair do sistema
         </button>

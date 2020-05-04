@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { Form } from '@unform/web';
+import { Form as UnForm } from '@rocketseat/unform';
 import { darken } from 'polished';
 
 const rotate = keyframes`
@@ -21,7 +21,7 @@ export const Loading = styled.div`
   }
 `;
 
-export const UnForm = styled(Form)`
+export const Form = styled(UnForm)`
   max-width: 900px;
   margin: 0 auto;
 

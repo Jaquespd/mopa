@@ -144,10 +144,7 @@ export default function CustomerServices() {
         <PageTitle>Gerenciando atendimentos aos clientes</PageTitle>
       </header>
       <div>
-        <SearchInput
-          placeholder="Buscar por atendimentos"
-          callback={handleSearch}
-        />
+        <SearchInput placeholder="Buscar por carros" callback={handleSearch} />
         <Link to="/customerservices/new">
           <MdAdd color="#FFFFFF" size={26} />
           Cadastrar
@@ -157,37 +154,47 @@ export default function CustomerServices() {
         <thead>
           <tr>
             <th>ID</th>
-            <th>Destinátario</th>
-            <th>Entregador</th>
-            <th>Cidade</th>
-            <th>Estado</th>
+            <th>Funcionários</th>
+            <th>Serviços</th>
+            <th>Cidades</th>
+            <th>Carro</th>
             <th>Status</th>
             <th>Ações</th>
           </tr>
         </thead>
         <tbody>
           {customerServices.map(
-            ({ employee, service, status, ...customerService }) => (
+            ({ employees, services, status, ...customerService }) => (
               <tr key={String(customerService.id)}>
                 <td>{customerService.idText}</td>
-                <td>{service?.customer}</td>
-                <EmployeeField>
-                  {employee && (
-                    <>
-                      {employee.avatar ? (
-                        <Avatar src={employee.avatar.url} />
-                      ) : (
-                        <LetterAvatar color={employee?.letterAvatar.color}>
-                          {employee?.letterAvatar.letters}
-                        </LetterAvatar>
-                      )}
-
-                      {employee.customer}
-                    </>
-                  )}
-                </EmployeeField>
-                <td>{service?.subtype}</td>
-                <td>{service?.description}</td>
+                <td>
+                  <ul>
+                    {employees
+                      ? employees.map((employee) => (
+                          <li key={employee.id}>{employee.name}</li>
+                        ))
+                      : ''}
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    {services
+                      ? services.map((service) => (
+                          <li key={service.id}>{service.customer}</li>
+                        ))
+                      : ''}
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    {services
+                      ? services.map((service) => (
+                          <li key={service.id}>{service.city}</li>
+                        ))
+                      : ''}
+                  </ul>
+                </td>
+                <td>{customerService?.car}</td>
                 <td>
                   <CustomerServiceStatus color={status.color}>
                     {status.text}
@@ -198,7 +205,7 @@ export default function CustomerServices() {
                     <button
                       type="button"
                       onClick={() =>
-                        handleLook({ ...customerService, service })
+                        handleLook({ ...customerService, services })
                       }
                     >
                       <MdRemoveRedEye size={24} color="#8E5BE8" />
@@ -233,7 +240,7 @@ export default function CustomerServices() {
       />
       {looking && (
         <LookCustomerService
-          customerService={looking}
+          delivery={looking}
           closeCallback={() => setLooking(null)}
         />
       )}

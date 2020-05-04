@@ -4,28 +4,25 @@ import { parseISO, format } from 'date-fns';
 
 import { Container, Scroll } from './styles';
 
-export default function LookCustomerService({
-  customerService,
-  closeCallback,
-}) {
+export default function LookCustomerService({ delivery, closeCallback }) {
   useEffect(() => {
     document.addEventListener('keyup', closeCallback, false);
     return () => {
       document.removeEventListener('keyup', closeCallback, false);
     };
   }, [closeCallback]);
-
-  if (!customerService) return <></>;
+  console.log(delivery);
+  if (!delivery) return <></>;
 
   const {
     car,
     start_date,
     end_date,
     canceled_at,
-    service,
+    services,
     problems,
     signature,
-  } = customerService;
+  } = delivery;
 
   let formattedStart;
   let formattedEnd;
@@ -48,9 +45,21 @@ export default function LookCustomerService({
         <Scroll>
           <strong>Informações do atendimento</strong>
           <p>{car}</p>
-          <p>{`${service?.city}, ${service?.local}`}</p>
-          <p>{`${service?.subtype} - ${service?.description}`}</p>
-          {service?.type && <p>service?.type</p>}
+          {services &&
+            services.map((service) => {
+              return (
+                <div key={service.id}>
+                  {service.customer && <p>Cliente: {service.customer}</p>}
+                  {service.city && <p>Cidade: {service.city}</p>}
+                  {service.local && <p>Local: {service.local}</p>}
+                  {service.type && <p>Tipo: {service.type}</p>}
+                  {service.subtype && <p>Sub-Tipo: {service.subtype}</p>}
+                  {service.description && (
+                    <p>Descrição: {service.description}</p>
+                  )}
+                </div>
+              );
+            })}
 
           {(start_date || end_date || canceled_at) && (
             <>
@@ -77,7 +86,7 @@ export default function LookCustomerService({
             </p>
           )}
 
-          {problems.length > 0 && (
+          {problems && (
             <>
               <hr />
               <strong>Problemas ocorridos</strong>
@@ -106,6 +115,6 @@ export default function LookCustomerService({
 }
 
 LookCustomerService.propTypes = {
-  customerService: PropTypes.object.isRequired,
+  delivery: PropTypes.object.isRequired,
   closeCallback: PropTypes.func.isRequired,
 };

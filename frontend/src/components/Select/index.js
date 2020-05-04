@@ -1,6 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 import PropTypes from 'prop-types';
+import makeAnimated from 'react-select/animated';
 
 import { Container } from './styles';
 
@@ -37,6 +38,7 @@ export default function SelectComponent({
     <Container>
       <strong>{label}</strong>
       <Select
+        components={makeAnimated()}
         name={name}
         styles={customStyles}
         isSearchable={false}
@@ -44,6 +46,7 @@ export default function SelectComponent({
         onChange={onChange}
         defaultValue={defaultValue}
         placeholder={placeholder}
+        isMulti
       />
     </Container>
   );

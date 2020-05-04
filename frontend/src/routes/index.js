@@ -16,6 +16,7 @@ import NewRecipient from '~/pages/NewRecipient';
 import Services from '~/pages/Services';
 import NewService from '~/pages/NewService';
 import Problems from '~/pages/Problems';
+import ProblemsCustomerServices from '~/pages/ProblemsCustomerServices';
 
 export default function Routes() {
   return (
@@ -134,6 +135,12 @@ export default function Routes() {
         component={Problems}
         isPrivate
         locationName="problems"
+      />
+      <Route
+        path="/problemscustomerservices"
+        component={ProblemsCustomerServices}
+        isPrivate
+        locationName="problemscustomerservices"
       />
     </Switch>
   );

@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
 import { PropTypes } from 'prop-types';
 import { toast } from 'react-toastify';
 import { AiOutlineLoading } from 'react-icons/ai';
 import { MdDone, MdKeyboardArrowLeft } from 'react-icons/md';
-import { Loading, Form, Button, Card } from './styles';
+import { Loading, UnForm, Button, Card } from './styles';
 import { PageTitle } from '~/styles/PageTittle';
 
 import Input from '~/components/Input';
@@ -12,14 +12,15 @@ import Select from '~/components/Select';
 import history from '~/services/history';
 import api from '~/services/api';
 
+import AsyncSelect from '~/components/AsyncSelectInput';
+
 export default function NewCustomerService({ match }) {
+  const formRef = useRef(null);
   const { id } = match.params;
 
   const [customerService, setCustomerService] = useState(null);
   const [services, setServices] = useState([]);
   const [employees, setEmployees] = useState([]);
-  const [selectedService, setSelectedService] = useState(null);
-  const [selectedEmployee, setSelectedEmployee] = useState(null);
 
   useEffect(() => {
     async function loadData() {
@@ -35,8 +36,35 @@ export default function NewCustomerService({ match }) {
         if (id) {
           const { data } = await api.get(`customerservices/${id}`);
           setCustomerService(data);
-          setSelectedService(data.service);
-          setSelectedEmployee(data.employee);
+
+          const { services, employees, car } = data;
+
+          if (services) {
+            const defaultServices = services.map((service) => ({
+              label: service.customer,
+              value: service.id,
+            }));
+
+            formRef.current.setFieldValue('services_id', defaultServices);
+          }
+
+          if (employees) {
+            const defaultEmployees = employees.map((employee) => ({
+              label: employee.name,
+              value: employee.id,
+            }));
+
+            formRef.current.setFieldValue('employees_id', defaultEmployees);
+          }
+
+          if (car) {
+            const defaultCar = {
+              label: car,
+              value: car,
+            };
+
+            formRef.current.setFieldValue('car', defaultCar);
+          }
         }
       } catch (err) {
         toast.error('Falha ao carregar dados');
@@ -48,41 +76,51 @@ export default function NewCustomerService({ match }) {
 
   const servicesOptions = useMemo(() => {
     return services.map((service) => ({
-      value: service,
+      value: service.id,
       label: service.customer,
     }));
   }, [services]);
 
   const employeesOptions = useMemo(() => {
     return employees.map((employee) => ({
-      value: employee,
+      value: employee.id,
       label: employee.name,
     }));
   }, [employees]);
 
-  const handleChangeService = (selectedOption) => {
-    const { value } = selectedOption;
-
-    setSelectedService(value);
-  };
-
-  const handleChangeEmployee = (selectedOption) => {
-    const { value } = selectedOption;
-    setSelectedEmployee(value);
-  };
+  const carOptions = [
+    {
+      label: 'Sem carro',
+      value: '',
+    },
+    {
+      label: 'Doblo 8328',
+      value: 'Doblo 8328',
+    },
+    {
+      label: 'Doblo 8578',
+      value: 'Doblo 8578',
+    },
+    {
+      label: 'Oroch 7059',
+      value: 'Oroch 7059',
+    },
+    {
+      label: 'Oroch 7479',
+      value: 'Oroch 7479',
+    },
+    {
+      label: 'Toro 1774',
+      value: 'Toro 1774',
+    },
+  ];
 
   function handleGoBack() {
     history.push('/customerservices');
   }
 
   async function handleSubmit(data) {
-    if (!selectedService || !selectedEmployee || !data.car) {
-      toast.error('Preencha todo o formulário');
-      return;
-    }
-
-    data.service_id = selectedService.id;
-    data.employee_id = selectedEmployee.id;
+    console.log('data', data);
 
     if (id) {
       try {
@@ -115,10 +153,10 @@ export default function NewCustomerService({ match }) {
     );
   }
   return (
-    <Form onSubmit={handleSubmit} initialData={customerService || undefined}>
+    <UnForm ref={formRef} onSubmit={handleSubmit}>
       <header>
         <PageTitle>
-          {customerService ? 'Editar atendimento' : 'Cadastrar atendimento'}
+          {id ? 'Editar atendimento' : 'Cadastrar atendimento'}
         </PageTitle>
         <Button type="button" onClick={handleGoBack}>
           <MdKeyboardArrowLeft size={24} />
@@ -130,41 +168,36 @@ export default function NewCustomerService({ match }) {
         </Button>
       </header>
       <Card>
-        <Select
-          name="employee.name"
+        <AsyncSelect
+          name="employees_id"
           label="Funcionário"
           placeholder="Selecione um funcionário"
-          options={employeesOptions}
-          defaultValue={
-            customerService
-              ? {
-                  value: customerService.employee.id,
-                  label: customerService.employee.name,
-                }
-              : undefined
-          }
-          onChange={handleChangeEmployee}
+          cacheOptions
+          defaultOptions={employeesOptions}
+          loadOptions={employeesOptions}
+          isMulti
         />
 
-        <Select
-          name="service.customer"
+        <AsyncSelect
+          name="services_id"
           label="Serviço"
           placeholder="Selecione um serviço"
-          options={servicesOptions}
-          defaultValue={
-            customerService
-              ? {
-                  value: customerService.service.id,
-                  label: customerService.service.customer,
-                }
-              : undefined
-          }
-          onChange={handleChangeService}
+          cacheOptions
+          defaultOptions={servicesOptions}
+          loadOptions={servicesOptions}
+          isMulti
         />
 
-        <Input name="car" title="Carro" placeholder="Ex: Oroch" />
+        <AsyncSelect
+          name="car"
+          label="Carro"
+          placeholder="Selecione um carro"
+          cacheOptions
+          defaultOptions={carOptions}
+          loadOptions={carOptions}
+        />
       </Card>
-    </Form>
+    </UnForm>
   );
 }
 

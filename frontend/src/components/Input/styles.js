@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { Input as UnInput } from '@rocketseat/unform';
+// import { Input } from '@unform/web';
 
 export const Container = styled.div`
   padding-bottom: 10px;
 
   strong {
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     margin-bottom: 9px;
     color: #444444;
     display: block;
@@ -18,7 +18,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Input = styled(UnInput)`
+export const UnInput = styled.input`
   padding: 12px 15px;
   border-radius: 4px;
   border: 1px solid #dddddd;
