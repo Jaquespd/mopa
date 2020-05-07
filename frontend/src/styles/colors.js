@@ -14,6 +14,13 @@ const customerServiceStatus = {
   canceled: '#FAB0B0',
 };
 
+const itemStatus = {
+  delivered: '#DFF0DF',
+  pending: '#F0F0DF',
+  takeout: '#BAD2FF',
+  canceled: '#FAB0B0',
+};
+
 const deliveryStatus = {
   delivered: '#DFF0DF',
   pending: '#F0F0DF',
@@ -21,4 +28,4 @@ const deliveryStatus = {
   canceled: '#FAB0B0',
 };
 
-export { letterAvatar, customerServiceStatus, deliveryStatus };
+export { letterAvatar, customerServiceStatus, itemStatus, deliveryStatus };

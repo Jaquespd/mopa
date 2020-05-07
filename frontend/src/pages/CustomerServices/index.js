@@ -157,8 +157,8 @@ export default function CustomerServices() {
             <th>Funcionários</th>
             <th>Serviços</th>
             <th>Cidades</th>
-            <th>Carro</th>
             <th>Status</th>
+            <th>Carro</th>
             <th>Ações</th>
           </tr>
         </thead>
@@ -194,12 +194,12 @@ export default function CustomerServices() {
                       : ''}
                   </ul>
                 </td>
-                <td>{customerService?.car}</td>
                 <td>
                   <CustomerServiceStatus color={status.color}>
                     {status.text}
                   </CustomerServiceStatus>
                 </td>
+                <td>{customerService?.car}</td>
                 <td>
                   <Actions>
                     <button

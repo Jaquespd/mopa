@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { MdDone, MdKeyboardArrowLeft } from 'react-icons/md';
 import { AiOutlineLoading } from 'react-icons/ai';
-import { Loading, Form, Button, Card } from './styles';
+import { Loading, UnForm, Button, Card } from './styles';
 import { PageTitle } from '~/styles/PageTittle';
 
 import AvatarInput from './AvatarInput';
@@ -81,7 +81,7 @@ export default function NewEmployee({ match }) {
   }
 
   return (
-    <Form
+    <UnForm
       schema={schema}
       initialData={employee || undefined}
       onSubmit={handleSubmit}
@@ -101,17 +101,17 @@ export default function NewEmployee({ match }) {
       </header>
       <Card>
         <AvatarInput name="avatar_id" />
-        <Input title="nome" name="name" placeholder="Chico Bioca" />
-        <Input title="cargo" name="role" placeholder="Eletricista" />
-        <Input title="telefone" name="phone" placeholder="84 98855-0000" />
+        <Input label="Nome" name="name" placeholder="Chico Bioca" />
+        <Input label="Cargo" name="role" placeholder="Eletricista" />
+        <Input label="Telefone" name="phone" placeholder="84 98855-0000" />
         <Input
-          title="Email"
+          label="Email"
           name="email"
           type="email"
           placeholder="chico@gmail.com"
         />
       </Card>
-    </Form>
+    </UnForm>
   );
 }
 

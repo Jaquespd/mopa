@@ -3,7 +3,8 @@ import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { MdAdd, MdEdit, MdDeleteForever } from 'react-icons/md';
 
-import { Container, NameField, LetterAvatar } from './styles';
+import { Container, NameField, LetterAvatar, ServiceStatus } from './styles';
+import { itemStatus } from '~/styles/colors';
 
 import { PageTitle } from '~/styles/PageTittle';
 
@@ -35,6 +36,23 @@ export default function Services() {
       }, ${item.subtype ? ` [${item.subtype}]` : ``} - ${
         item.description ? ` [${item.description}]` : ``
       }`;
+
+      if (item.state === 'FECHADO')
+        item.status = {
+          color: itemStatus.canceled,
+          text: 'FECHADO',
+        };
+      else if (item.state === 'ANDAMENTO')
+        item.status = {
+          color: itemStatus.delivered,
+          text: 'ANDAMENTO',
+        };
+      else {
+        item.status = {
+          color: itemStatus.pending,
+          text: 'ABERTO',
+        };
+      }
 
       return item;
     });
@@ -117,7 +135,10 @@ export default function Services() {
           <tr>
             <th>ID</th>
             <th>Cliente</th>
-            <th>Serviço</th>
+            <th>Tipo</th>
+            <th>Subtipo</th>
+            <th>Cidade</th>
+            <th>Situação</th>
             <th>Ações</th>
           </tr>
         </thead>
@@ -126,13 +147,15 @@ export default function Services() {
             <tr key={String(item.id)}>
               <td>{item.idText}</td>
 
-              <NameField>
-                <LetterAvatar color={item.letterAvatar.color}>
-                  {item.letterAvatar.letters}
-                </LetterAvatar>
-                {item.customer}
-              </NameField>
-              <td>{item.summary}</td>
+              <NameField>{item.customer}</NameField>
+              <td>{item.type}</td>
+              <td>{item.subtype}</td>
+              <td>{item.city}</td>
+              <td>
+                <ServiceStatus color={item.status.color}>
+                  {item.status.text}
+                </ServiceStatus>
+              </td>
               <td>
                 <Actions>
                   <button type="button" onClick={() => handleEdit(item)}>

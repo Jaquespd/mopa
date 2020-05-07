@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { Form as UnForm } from '@rocketseat/unform';
+import { Form } from '@unform/web';
 import { darken } from 'polished';
 
 const rotate = keyframes`
@@ -21,7 +21,7 @@ export const Loading = styled.div`
   }
 `;
 
-export const Form = styled(UnForm)`
+export const UnForm = styled(Form)`
   header {
     margin-bottom: 34px;
     display: flex;

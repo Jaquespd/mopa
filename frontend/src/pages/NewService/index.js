@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import InputMask from 'react-input-mask';
 import { MdDone, MdKeyboardArrowLeft } from 'react-icons/md';
 import { AiOutlineLoading } from 'react-icons/ai';
-import { Loading, Form, Button, Card } from './styles';
+import { Loading, UnForm, Button, Card } from './styles';
 import { PageTitle } from '~/styles/PageTittle';
 
 import Input from '~/components/Input';
@@ -78,7 +78,7 @@ export default function NewService({ match }) {
     );
   }
   return (
-    <Form
+    <UnForm
       schema={schema}
       initialData={service || undefined}
       onSubmit={handleSubmit}
@@ -96,29 +96,29 @@ export default function NewService({ match }) {
       </header>
       <Card>
         <Input
-          title="Cliente"
+          label="Cliente"
           name="customer"
           placeholder="Ex: Jacinto Pinto"
         />
-        <Input title="Cidade" name="city" placeholder="Ex: Macaiba" />
-        <Input title="Local" name="local" placeholder="Ex: Protocolo" />
+        <Input label="Cidade" name="city" placeholder="Ex: Macaiba" />
+        <Input label="Local" name="local" placeholder="Ex: Protocolo" />
         <Input
-          title="Tipo de serviço"
+          label="Tipo de serviço"
           name="type"
           placeholder="Ex: Elétrico, Refrigeração"
         />
         <Input
-          title="Subtipo do serviço"
+          label="Subtipo do serviço"
           name="subtype"
           placeholder="Ex: Novo ponto elétrico"
         />
         <Input
-          title="Descrição"
+          label="Descrição"
           name="description"
           placeholder="Ex: Descrição do problema"
         />
       </Card>
-    </Form>
+    </UnForm>
   );
 }
 

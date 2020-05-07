@@ -56,3 +56,24 @@ export const LetterAvatar = styled.span`
   display: inline-block;
   margin-right: 5px;
 `;
+
+export const ServiceStatus = styled.span`
+  background: ${(props) => props.color};
+  color: ${(props) => darken(0.4, props.color)};
+  text-transform: uppercase;
+  padding: 3px 7px;
+  border-radius: 12px;
+  font-size: 14px;
+  display: inline-block;
+  font-weight: bold;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    margin-right: 6px;
+    background: ${(props) => darken(0.4, props.color)};
+  }
+`;

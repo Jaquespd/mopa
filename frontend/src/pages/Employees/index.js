@@ -113,7 +113,9 @@ export default function Employees() {
             <th>ID</th>
             <th>Foto</th>
             <th>Nome</th>
+            <th>Cargo</th>
             <th>Telefone</th>
+            <th>Email</th>
             <th>Ações</th>
           </tr>
         </thead>
@@ -132,7 +134,9 @@ export default function Employees() {
                 )}
               </EmployeeField>
               <td>{employee.name}</td>
+              <td>{employee.role}</td>
               <td>{employee.phone}</td>
+              <td>{employee.email}</td>
               <td>
                 <Actions>
                   <button type="button" onClick={() => handleEdit(employee)}>
