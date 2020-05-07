@@ -25,7 +25,7 @@ export default function SignIn() {
 
   return (
     <>
-      <StatusBar barStyle="light-content" backgroundColor="#7D40E7" />
+      <StatusBar barStyle="light-content" backgroundColor="#4D85EE" />
       <Container>
         <Image source={logo} tintColor="#fff" />
         <Input

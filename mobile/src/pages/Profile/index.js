@@ -56,6 +56,6 @@ TabBarIcon.propTypes = {
 };
 
 Profile.navigationOptions = {
-  tabBarLabel: 'Entregas',
+  tabBarLabel: 'Perfil',
   tabBarIcon: TabBarIcon,
 };
