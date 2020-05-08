@@ -10,7 +10,7 @@ export function* signIn({ payload }) {
   try {
     const { deliverymanId } = payload;
 
-    const response = yield call(api.get, `/deliverymen/${deliverymanId}`);
+    const response = yield call(api.get, `/employees/${deliverymanId}`);
 
     yield put(signInSuccess(response.data));
   } catch (err) {
