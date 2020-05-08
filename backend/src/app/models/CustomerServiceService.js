@@ -1,10 +1,10 @@
 import Sequelize, { Model } from 'sequelize';
 
-class CustomerService extends Model {
+class CustomerServiceService extends Model {
   static init(sequelize) {
     super.init(
       {
-        car: {
+        state: {
           type: Sequelize.STRING,
           allowNull: true,
         },
@@ -23,7 +23,7 @@ class CustomerService extends Model {
       },
       {
         sequelize,
-        tableName: 'customer_services',
+        tableName: 'cs_services',
       }
     );
 
@@ -31,25 +31,19 @@ class CustomerService extends Model {
   }
 
   static associate(models) {
-    this.belongsToMany(models.Service, {
-      through: models.CustomerServiceService,
-      foreignKey: 'customer_service_id',
-      as: 'services',
-    });
-    this.belongsToMany(models.Employee, {
-      through: 'cs_employees',
-      foreignKey: 'customer_service_id',
-      as: 'employees',
-    });
     this.belongsTo(models.File, {
       foreignKey: 'signature_id',
       as: 'signature',
     });
-    this.hasMany(models.ProblemCustomerService, {
+    this.belongsTo(models.CustomerService, {
       foreignKey: 'customer_service_id',
-      as: 'problems',
+      as: 'customer_service',
+    });
+    this.belongsTo(models.Service, {
+      foreignKey: 'services_id',
+      as: 'services',
     });
   }
 }
 
-export default CustomerService;
+export default CustomerServiceService;
