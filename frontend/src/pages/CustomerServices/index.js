@@ -46,6 +46,31 @@ export default function CustomerServices() {
           index
         );
       }
+      console.log(customerService);
+
+      customerService.services.map((service, index) => {
+        if (service.CustomerServiceService.canceled_at) {
+          customerService.services[index].situacion = {
+            color: customerServiceStatus.canceled,
+            text: 'CANCELADA',
+          };
+        } else if (service.CustomerServiceService.end_date) {
+          customerService.services[index].situacion = {
+            color: customerServiceStatus.delivered,
+            text: 'ENTREGUE',
+          };
+        } else if (service.CustomerServiceService.start_date) {
+          customerService.services[index].situacion = {
+            color: customerServiceStatus.takeout,
+            text: 'RETIRADA',
+          };
+        } else {
+          customerService.services[index].situacion = {
+            color: customerServiceStatus.pending,
+            text: 'PENDENTE',
+          };
+        }
+      });
 
       if (customerService.canceled_at)
         customerService.status = {
@@ -68,7 +93,6 @@ export default function CustomerServices() {
           text: 'PENDENTE',
         };
       }
-
       return customerService;
     });
   }, []);
@@ -195,9 +219,16 @@ export default function CustomerServices() {
                   </ul>
                 </td>
                 <td>
-                  <CustomerServiceStatus color={status.color}>
-                    {status.text}
-                  </CustomerServiceStatus>
+                  {services
+                    ? services.map((service) => (
+                        <CustomerServiceStatus
+                          key={service.id}
+                          color={service.situacion.color}
+                        >
+                          {service.situacion.text}
+                        </CustomerServiceStatus>
+                      ))
+                    : ''}
                 </td>
                 <td>{customerService?.car}</td>
                 <td>

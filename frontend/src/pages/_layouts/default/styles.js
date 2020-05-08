@@ -11,7 +11,7 @@ export const Content = styled.div`
   margin: 35px auto;
   margin-bottom: 0;
   width: 100%;
-  max-width: calc(1440px - 120px * 2);
+  max-width: calc(1440px - 1px * 2);
   padding-left: 10px;
   padding-right: 15px;
   padding-bottom: 130px;
