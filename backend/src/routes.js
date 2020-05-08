@@ -50,6 +50,7 @@ routes.get(
 
 routes.post('/files', upload.single('file'), FileController.store);
 
+routes.get('/employees/:id', EmployeeController.show);
 routes.use(authMiddleware);
 
 routes.get('/recipients', RecipientController.index);
@@ -80,7 +81,6 @@ routes.delete(
 );
 
 routes.get('/employees', EmployeeController.index);
-routes.get('/employees/:id', EmployeeController.show);
 routes.post('/employees', EmployeeController.store);
 routes.put('/employees/:id', EmployeeController.update);
 routes.delete('/employees/:id', EmployeeController.delete);
