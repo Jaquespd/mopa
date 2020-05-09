@@ -52,7 +52,7 @@ export default function ListDeliveries({ navigation, mode = 'pending' }) {
     } catch (err) {
       Alert.alert(
         'Falha na requisição',
-        'Não foi possível buscar as entregas, por favor tente mais tarde.'
+        'Não foi possível buscar os serviços, por favor tente mais tarde.'
       );
     }
     setLoading(false);
@@ -77,7 +77,7 @@ export default function ListDeliveries({ navigation, mode = 'pending' }) {
     } catch (err) {
       Alert.alert(
         'Falha na requisição',
-        'Não foi possível buscar as entregas, por favor tente mais tarde.'
+        'Não foi possível buscar os serviços, por favor tente mais tarde.'
       );
     }
     setRefreshing(false);
@@ -109,7 +109,7 @@ export default function ListDeliveries({ navigation, mode = 'pending' }) {
     } catch (err) {
       Alert.alert(
         'Falha na requisição',
-        'Não foi possível buscar as entregas, por favor tente mais tarde.'
+        'Não foi possível buscar os serviços, por favor tente mais tarde.'
       );
     }
 
@@ -147,7 +147,7 @@ export default function ListDeliveries({ navigation, mode = 'pending' }) {
           ) : (
             <Empty>
               <Lottie source={noVisibility} autoPlay loop />
-              <EmptyLabel>Sem entregas por aqui</EmptyLabel>
+              <EmptyLabel>Sem serviços por aqui</EmptyLabel>
             </Empty>
           )}
         </>

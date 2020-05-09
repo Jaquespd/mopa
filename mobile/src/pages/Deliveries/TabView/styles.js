@@ -19,7 +19,7 @@ export const Buttons = styled.View`
 `;
 
 export const Line = styled(Animated.View)`
-  background-color: #7d40e7;
+  background-color: #4d85ee;
   height: 2px;
   width: 90px;
   position: absolute;

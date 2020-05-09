@@ -57,7 +57,7 @@ export default (isSigned = false) =>
               ),
               navigationOptions: () => ({
                 tabBarLabel: 'Entregas',
-                activeTintColor: '#7D40E7',
+                activeTintColor: '#4d85ee',
                 inactiveTintColor: '#999999',
 
                 // eslint-disable-next-line react/prop-types
@@ -72,7 +72,7 @@ export default (isSigned = false) =>
             resetOnBlur: true,
             tabBarOptions: {
               keyboardHidesTabBar: true,
-              activeTintColor: '#7D40E7',
+              activeTintColor: '#4d85ee',
               inactiveTintColor: '#999999',
               labelStyle: {
                 fontSize: 14,

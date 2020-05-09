@@ -9,8 +9,8 @@ export const Container = styled.View`
 
 export const Line = styled.View`
   height: 1px;
-  background: #7d40e7;
-  border: 1px solid #7d40e7;
+  background: #4d85ee;
+  border: 1px solid #4d85ee;
   margin-left: 23px;
   margin-right: 16px;
   margin-top: 0px;
@@ -25,9 +25,9 @@ export const StatusContainer = styled.View`
 export const Dot = styled.View`
   width: 10px;
   height: 10px;
-  border: 1px solid #7d40e7;
+  border: 1px solid #4d85ee;
   border-radius: 5px;
-  background: ${(props) => (props.filled ? '#7d40e7' : '#FFFFFF')};
+  background: ${(props) => (props.filled ? '#4d85ee' : '#FFFFFF')};
   margin-bottom: 5px;
 `;
 

@@ -26,7 +26,7 @@ export default function DeliveryCard({ navigation, delivery }) {
     >
       <Content>
         <Header>
-          <Icon size={25} name="local-shipping" color="#7D40E7" />
+          <Icon size={25} name="local-shipping" color="#4d85ee" />
           <Title>{`Encomenda ${delivery.formattedId}`}</Title>
         </Header>
 
