@@ -20,7 +20,7 @@ export default function LookProblem({ problem, closeCallback }) {
     end_date,
     canceled_at,
     service,
-  } = problem.customer_service;
+  } = problem.customerservice;
 
   let formattedStart;
   let formattedCanceled;
@@ -38,11 +38,11 @@ export default function LookProblem({ problem, closeCallback }) {
     <Container id="look-delivery-container" onClick={handleCloseByClick}>
       <div>
         <Scroll>
-          <strong>Informações da encomenda</strong>
+          <strong>Informações do serviço</strong>
           <p>{car}</p>
-          <p>{`${service.city}, ${service.local}`}</p>
-          <p>{`${service.subtype} - ${service.description}`}</p>
-          {service.type && <p>service.type</p>}
+          <p>{`${'service.city'}, ${'service.local'}`}</p>
+          <p>{`${'service.subtype'} - ${'service.description'}`}</p>
+          {'service.type' && <p>'service.type'</p>}
 
           {(start_date || end_date || canceled_at) && (
             <>

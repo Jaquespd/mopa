@@ -24,10 +24,7 @@ export default function ProblemsCustomerServices() {
 
   const parseProblems = useCallback((data) => {
     return data.map((item) => {
-      item.idText =
-        item.customer_service.id > 9
-          ? `#${item.customer_service.id}`
-          : `#0${item.customer_service.id}`;
+      item.idText = item.id > 9 ? `#${item.id}` : `#0${item.id}`;
 
       return item;
     });
@@ -45,8 +42,13 @@ export default function ProblemsCustomerServices() {
 
     if (!gonnaCancel) return;
 
-    await api.delete(`/problem/${item.id}/cancel-customerservice`);
+    await api.delete(`/service-problem/${item.id}/cancel-service`);
     toast.info(`O atendimento ${item.idText} foi cancelado.`);
+
+    await api.put('service/state', {
+      state: 'aberto',
+      ids: item.service.id,
+    });
 
     console.tron.log(gonnaCancel);
   }, []);
@@ -56,7 +58,7 @@ export default function ProblemsCustomerServices() {
       page: n,
     };
 
-    const response = await api.get('problemscustomerservice', { params });
+    const response = await api.get('service-problems', { params });
     const data = parseProblems(response.data.items);
     setProblems(data);
     setPage(response.data.page);
@@ -66,7 +68,7 @@ export default function ProblemsCustomerServices() {
 
   useEffect(() => {
     async function getEmployees() {
-      const response = await api.get('problemscustomerservice');
+      const response = await api.get('service-problems');
       const data = parseProblems(response.data.items);
       setProblems(data);
       setPage(response.data.page);
@@ -95,7 +97,9 @@ export default function ProblemsCustomerServices() {
             <tr key={String(item.id)}>
               <td>
                 {item.idText}{' '}
-                {item.customer_service.canceled_at && (
+                {item.customerservice.services.filter(
+                  (service) => service.id === item.service.id
+                )[0].CustomerServiceService.canceled_at && (
                   <DeliveryStatus color={deliveryStatus.canceled}>
                     cancelada
                   </DeliveryStatus>
@@ -105,12 +109,22 @@ export default function ProblemsCustomerServices() {
                 <DescriptionField>{item.description}</DescriptionField>
               </td>
               <td>
-                <Actions w={!item.customer_service.canceled_at ? 220 : 125}>
+                <Actions
+                  w={
+                    !item.customerservice.services.filter(
+                      (service) => service.id === item.service.id
+                    )[0].CustomerServiceService.canceled_at
+                      ? 220
+                      : 125
+                  }
+                >
                   <button type="button" onClick={() => handleLook(item)}>
                     <MdRemoveRedEye size={24} color="#4D85EE" />
                     Visualizar
                   </button>
-                  {!item.customer_service.canceled_at && (
+                  {!item.customerservice.services.filter(
+                    (service) => service.id === item.service.id
+                  )[0].CustomerServiceService.canceled_at && (
                     <button
                       type="button"
                       onClick={() => handleCancelCustomerService(item)}

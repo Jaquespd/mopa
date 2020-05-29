@@ -7,7 +7,7 @@ import { Container, Purple, Content } from './styles';
 export default function Background({ children }) {
   return (
     <>
-      <StatusBar backgroundColor="#7D40E7" barStyle="light-content" />
+      <StatusBar backgroundColor="#4d85ee" barStyle="light-content" />
       <Container>
         <Purple />
         <Content>{children}</Content>

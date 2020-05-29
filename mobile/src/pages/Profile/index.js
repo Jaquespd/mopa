@@ -35,6 +35,9 @@ export default function Profile() {
         <Title>Nome Completo</Title>
         <SubTitle>{profile.name}</SubTitle>
 
+        <Title>Telefone</Title>
+        <SubTitle>{profile.phone}</SubTitle>
+
         <Title>Email</Title>
         <SubTitle>{profile.email}</SubTitle>
 

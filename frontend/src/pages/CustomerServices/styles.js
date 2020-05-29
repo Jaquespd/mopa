@@ -73,7 +73,8 @@ export const CustomerServiceStatus = styled.span`
   padding: 3px 7px;
   border-radius: 12px;
   font-size: 14px;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
   font-weight: bold;
 
   &::before {

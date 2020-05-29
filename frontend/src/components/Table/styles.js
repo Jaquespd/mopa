@@ -4,7 +4,7 @@ export const Container = styled.table`
   width: 100%;
   border-spacing: 0;
   border-collapse: separate;
-  border-spacing: 0px 21px;
+  border-spacing: 0px 15px;
   max-width: 100%;
 
   img {

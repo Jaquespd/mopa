@@ -19,7 +19,7 @@ export const Header = styled.View`
 `;
 
 export const Title = styled.Text`
-  color: #7d40e7;
+  color: #4d85ee;
   font-size: 14px;
   font-weight: bold;
   margin-left: 10px;
@@ -54,5 +54,5 @@ export const SubTitle = styled.Text`
 export const Button = styled.TouchableOpacity``;
 
 export const ButtonText = styled(SubTitle)`
-  color: #7d40e7;
+  color: #4d85ee;
 `;

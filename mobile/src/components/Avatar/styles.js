@@ -11,7 +11,7 @@ export const Container = styled.View`
 
 export const Letters = styled.Text`
   font-size: ${(props) => (props.size * 0.45).toFixed()}px;
-  color: #a28fd0;
+  color: #4d85ee;
   text-align: center;
 `;
 

@@ -26,11 +26,14 @@ export default function DeliveryCard({ navigation, delivery }) {
     >
       <Content>
         <Header>
-          <Icon size={25} name="local-shipping" color="#7D40E7" />
-          <Title>{`Encomenda ${delivery.formattedId}`}</Title>
+          <Icon size={25} name="build" color="#4d85ee" />
+          <Title>{`Ordem de Serviço: ${delivery.formattedId}`}</Title>
         </Header>
 
-        <Timeline start={delivery.start_date} end={delivery.end_date} />
+        <Timeline
+          start={delivery.CustomerServiceService.start_date}
+          end={delivery.CustomerServiceService.end_date}
+        />
       </Content>
       <Footer>
         <FooterItem>
@@ -40,7 +43,7 @@ export default function DeliveryCard({ navigation, delivery }) {
 
         <FooterItem>
           <Small>Cidade</Small>
-          <SubTitle>{delivery.recipient.city}</SubTitle>
+          <SubTitle>{delivery.city}</SubTitle>
         </FooterItem>
 
         <FooterItem>

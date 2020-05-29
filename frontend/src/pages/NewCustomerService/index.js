@@ -120,8 +120,7 @@ export default function NewCustomerService({ match }) {
   }
 
   async function handleSubmit(data) {
-    console.log('data', data);
-
+    console.log(data);
     if (id) {
       try {
         await api.put(`customerservices/${id}`, data);
@@ -134,8 +133,13 @@ export default function NewCustomerService({ match }) {
       }
     } else {
       try {
+        const newState = {
+          state: 'distribuido',
+          ids: data.services_id,
+        };
         await api.post('customerservices', data);
         toast.success('O atendimento ao cliente foi cadastrado com sucesso!');
+        await api.put('service/state', newState);
         history.push('/customerservices');
       } catch (err) {
         toast.error(

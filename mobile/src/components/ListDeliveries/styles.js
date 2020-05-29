@@ -31,7 +31,7 @@ export const FilterButton = styled.TouchableOpacity`
 `;
 
 export const FilterText = styled.Text`
-  color: ${(props) => (props.selected ? '#7D40E7' : '#999999')};
+  color: ${(props) => (props.selected ? '#4d85ee' : '#999999')};
   font-size: 13px;
   font-weight: bold;
   text-decoration: underline;
@@ -39,7 +39,7 @@ export const FilterText = styled.Text`
 
 export const Loading = styled(ActivityIndicator).attrs({
   size: 'large',
-  color: '#7D40E7',
+  color: '#4d85ee',
 })`
   flex: 1;
   justify-content: center;
@@ -55,7 +55,7 @@ export const LoadingMoreContainer = styled.View`
 
 export const LoadingMoreSpinner = styled(ActivityIndicator).attrs({
   size: 'small',
-  color: '#7D40E7',
+  color: '#4d85ee',
 })``;
 
 export const LoadingMoreText = styled.Text`

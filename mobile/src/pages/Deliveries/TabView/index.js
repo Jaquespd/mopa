@@ -12,7 +12,7 @@ export default function CustomTabView({ navigation }) {
   const [position] = useState(() => new Animated.Value(0));
   const [routes] = useState([
     { key: 'pending', title: 'Pendentes' },
-    { key: 'delivered', title: 'Entregues' },
+    { key: 'delivered', title: 'Concluidos' },
   ]);
 
   function handleIndexChange(i) {
@@ -29,14 +29,14 @@ export default function CustomTabView({ navigation }) {
 
     return (
       <Container>
-        <Title>Entregas</Title>
+        <Title>Serviços</Title>
 
         <Buttons>
           {routes.map((route, i) => {
             const color = interpolateColors(
               position,
               inputRange,
-              inputRange.map((item) => (item === i ? '#7D40E7' : '#999999'))
+              inputRange.map((item) => (item === i ? '#4d85ee' : '#999999'))
             );
 
             return (

@@ -21,6 +21,7 @@ import api from '~/services/api';
 
 export default function Confirm({ navigation }) {
   const deliveryId = navigation.getParam('deliveryId');
+  const serviceId = navigation.getParam('serviceId');
   const deliverymanId = useSelector((store) => store.deliveryman.profile.id);
 
   const [picture, setPicture] = useState(null);
@@ -72,11 +73,18 @@ export default function Confirm({ navigation }) {
 
       const signature_id = response.data.id;
 
-      await api.put(`/deliveryman/${deliverymanId}/deliveries/${deliveryId}`, {
-        signature_id,
-      });
+      await api.put(
+        `/employee/${deliverymanId}/customerservices/${deliveryId}/service/${serviceId}`,
+        {
+          signature_id,
+        }
+      );
 
       Toast.show('Entrega finalizada');
+      await api.put('service/state', {
+        state: 'fechado',
+        ids: serviceId,
+      });
       setLoading(false);
       navigationReset();
     } catch (err) {

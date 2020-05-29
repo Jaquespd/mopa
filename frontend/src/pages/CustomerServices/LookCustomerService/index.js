@@ -11,7 +11,6 @@ export default function LookCustomerService({ delivery, closeCallback }) {
       document.removeEventListener('keyup', closeCallback, false);
     };
   }, [closeCallback]);
-  console.log(delivery);
   if (!delivery) return <></>;
 
   const {

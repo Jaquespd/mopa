@@ -7,7 +7,7 @@ export const Container = styled.View`
 `;
 
 export const Purple = styled.View`
-  background-color: #7d40e7;
+  background-color: #4d85ee;
   align-self: stretch;
   height: 150px;
   margin-bottom: -70px;

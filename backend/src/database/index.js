@@ -6,10 +6,12 @@ import File from '../app/models/File';
 import Deliveryman from '../app/models/Deliveryman';
 import Delivery from '../app/models/Delivery';
 import Problem from '../app/models/Problem';
+import ServiceProblem from '../app/models/ServiceProblem';
 import Employee from '../app/models/Employee';
 import Service from '../app/models/Service';
 import CustomerService from '../app/models/CustomerService';
-import ProblemCustomerService from '../app/models/ProblemCustomerService';
+// import ProblemCustomerService from '../app/models/ProblemCustomerService';
+import CustomerServiceService from '../app/models/CustomerServiceService';
 
 import databaseConfig from '../config/database';
 
@@ -23,7 +25,9 @@ const models = [
   Employee,
   Service,
   CustomerService,
-  ProblemCustomerService,
+  CustomerServiceService,
+  ServiceProblem,
+  // ProblemCustomerService,
 ];
 class Database {
   constructor() {

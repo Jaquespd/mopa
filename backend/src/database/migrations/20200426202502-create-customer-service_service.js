@@ -19,6 +19,29 @@ module.exports = {
         onDelete: 'CASCADE',
         allowNull: false,
       },
+      signature_id: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        references: { model: 'files', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
+      },
+      state: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      canceled_at: {
+        type: Sequelize.DATE,
+        allowNull: true,
+      },
+      start_date: {
+        type: Sequelize.DATE,
+        allowNull: true,
+      },
+      end_date: {
+        type: Sequelize.DATE,
+        allowNull: true,
+      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE,

@@ -37,15 +37,15 @@ export default function Services() {
         item.description ? ` [${item.description}]` : ``
       }`;
 
-      if (item.state === 'FECHADO')
+      if (item.state === 'fechado')
         item.status = {
           color: itemStatus.canceled,
           text: 'FECHADO',
         };
-      else if (item.state === 'ANDAMENTO')
+      else if (item.state === 'distribuido')
         item.status = {
           color: itemStatus.delivered,
-          text: 'ANDAMENTO',
+          text: 'DISTRIBUIDO',
         };
       else {
         item.status = {
