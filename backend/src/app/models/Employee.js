@@ -25,6 +25,10 @@ class Employee extends Model {
       foreignKey: 'employees_id',
       as: 'customer_services',
     });
+    this.hasMany(models.ServiceProblem, {
+      foreignKey: 'employee_id',
+      as: 'problems',
+    });
   }
 }
 

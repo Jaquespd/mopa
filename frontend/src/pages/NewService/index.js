@@ -59,7 +59,8 @@ export default function NewService({ match }) {
       }
     } else {
       try {
-        await api.post('services', data);
+        const service = await api.post('services', data);
+        // await api.put(`service/${service.id}/state`, { state: 'ABERTO' });
         toast.success('Serviço cadastrado com sucesso!');
         history.push('/services');
       } catch (err) {

@@ -24,7 +24,7 @@ export const CardHeader = styled.View`
 export const CardTitle = styled.Text`
   font-size: 14px;
   font-weight: bold;
-  color: #7d40e7;
+  color: #4d85ee;
   margin-left: 5px;
 `;
 

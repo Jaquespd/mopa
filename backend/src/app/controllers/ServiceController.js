@@ -60,15 +60,17 @@ class ServiceController {
       customer,
       city,
       local,
+      state,
       type,
       subtype,
       description,
-    } = await Service.create(req.body);
+    } = await Service.create({ ...req.body, state: 'aberto' });
 
     return res.json({
       id,
       customer,
       city,
+      state,
       local,
       type,
       subtype,

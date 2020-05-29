@@ -46,23 +46,22 @@ export default function CustomerServices() {
           index
         );
       }
-      console.log(customerService);
 
       customerService.services.map((service, index) => {
         if (service.CustomerServiceService.canceled_at) {
           customerService.services[index].situacion = {
             color: customerServiceStatus.canceled,
-            text: 'CANCELADA',
+            text: 'CANCELADO',
           };
         } else if (service.CustomerServiceService.end_date) {
           customerService.services[index].situacion = {
             color: customerServiceStatus.delivered,
-            text: 'ENTREGUE',
+            text: 'FINALIZADO',
           };
         } else if (service.CustomerServiceService.start_date) {
           customerService.services[index].situacion = {
             color: customerServiceStatus.takeout,
-            text: 'RETIRADA',
+            text: 'INICIADO',
           };
         } else {
           customerService.services[index].situacion = {

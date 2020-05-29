@@ -36,6 +36,21 @@ export default function ListDeliveries({ navigation, mode = 'pending' }) {
       ...delivery,
       formattedId: delivery.id < 10 ? `0${delivery.id}` : String(delivery.id),
       formattedDate: format(parseISO(delivery.createdAt), 'dd/MM/yyyy'),
+      services: delivery.services.map((service) => ({
+        ...service,
+        formattedId:
+          service.id < 10
+            ? `${service.CustomerServiceService.customer_service_id}-0${service.id}`
+            : `${service.CustomerServiceService.customer_service_id}-${service.id}`,
+        formattedDate: format(
+          parseISO(service.CustomerServiceService.createdAt),
+          'dd/MM/yyyy'
+        ),
+        car: delivery.car,
+        partner: delivery.employees
+          .filter((employee) => employee.id !== id)
+          .map((employee) => employee.name),
+      })),
     }));
   }
 
@@ -44,7 +59,7 @@ export default function ListDeliveries({ navigation, mode = 'pending' }) {
     setLoading(true);
     setPage(1);
     try {
-      let url = `deliveryman/${id}/deliveries`;
+      let url = `employee/${id}/customerservices`;
       if (mode === 'delivered') url += '?completed=true';
 
       const { data } = await api.get(url);
@@ -69,7 +84,7 @@ export default function ListDeliveries({ navigation, mode = 'pending' }) {
     setPage(1);
 
     try {
-      let url = `deliveryman/${id}/deliveries`;
+      let url = `employee/${id}/customerservices`;
       if (mode === 'delivered') url += '?completed=true';
 
       const { data } = await api.get(url);
@@ -91,7 +106,7 @@ export default function ListDeliveries({ navigation, mode = 'pending' }) {
 
     try {
       const params = { page: page + 1 };
-      const url = `deliveryman/${id}/deliveries`;
+      const url = `employee/${id}/customerservices`;
 
       if (mode === 'delivered') {
         params.completed = true;
@@ -127,9 +142,11 @@ export default function ListDeliveries({ navigation, mode = 'pending' }) {
               <List
                 data={deliveries}
                 keyExtractor={(delivery) => String(delivery.id)}
-                renderItem={({ item }) => (
-                  <DeliveryCard navigation={navigation} delivery={item} />
-                )}
+                renderItem={({ item }) =>
+                  item.services.map((service) => (
+                    <DeliveryCard navigation={navigation} delivery={service} />
+                  ))
+                }
                 refreshing={refreshing}
                 onRefresh={handleRefresh}
                 onEndReachedThreshold={0.5}

@@ -11,6 +11,8 @@ import api from '~/services/api';
 
 export default function NewProblem({ navigation }) {
   const deliveryId = navigation.getParam('deliveryId');
+  const employeeId = navigation.getParam('employeeId');
+  const serviceId = navigation.getParam('serviceId');
 
   const [problem, setProblem] = useState('');
   const [confirm, setConfirm] = useState(false);
@@ -40,10 +42,15 @@ export default function NewProblem({ navigation }) {
     setLoading(true);
 
     try {
-      await api.post(`delivery/${deliveryId}/problems`, {
-        description: problem,
-      });
+      // await api.post(`delivery/${deliveryId}/problems`, {
+      await api.post(
+        `customerservice/${deliveryId}/employee/${employeeId}/service/${serviceId}/problems`,
+        {
+          description: problem,
+        }
+      );
       Toast.show('Problema enviado');
+
       setLoading(false);
       navigationReset();
     } catch (err) {
@@ -60,7 +67,7 @@ export default function NewProblem({ navigation }) {
       <Container>
         <TextArea
           style={{ elevation: 3, textAlignVertical: 'top' }}
-          placeholder="Inclua aqui o problema que ocorreu na entrega."
+          placeholder="Inclua aqui o problema que ocorreu no serviço."
           value={problem}
           onChangeText={setProblem}
         />

@@ -20,17 +20,17 @@ export default function Timeline({ start = null, end = null }) {
       <StatusContainer>
         <LabelContainer>
           <Dot filled />
-          <Label>Aguardando Retirada</Label>
+          <Label>Distribuido</Label>
         </LabelContainer>
 
         <LabelContainer>
           <Dot filled={taken} />
-          <Label>Retirada</Label>
+          <Label>Iniciado</Label>
         </LabelContainer>
 
         <LabelContainer>
           <Dot filled={delivered} />
-          <Label>Entregue</Label>
+          <Label>Concluido</Label>
         </LabelContainer>
       </StatusContainer>
     </Container>

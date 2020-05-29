@@ -28,6 +28,10 @@ class Service extends Model {
       foreignKey: 'services_id',
       as: 'customer_services',
     });
+    this.hasMany(models.ServiceProblem, {
+      foreignKey: 'service_id',
+      as: 'problems',
+    });
   }
 }
 
