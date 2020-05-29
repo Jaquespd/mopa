@@ -13,6 +13,8 @@ import Input from '~/components/Input';
 import api from '~/services/api';
 import history from '~/services/history';
 
+import AsyncSelect from '~/components/AsyncSelectInput';
+
 const schema = Yup.object().shape({
   customer: Yup.string().required('Este campo é obrigatório'),
   city: Yup.string().required('Este campo é obrigatório'),
@@ -41,6 +43,31 @@ export default function NewService({ match }) {
       getService();
     }
   }, [id]);
+
+  // new function select citys
+
+  const selectCities = [
+    {
+      label: 'Macaíba',
+      value: 'Macaíba',
+    },
+    {
+      label: 'Goianinha',
+      value: 'Goianinha',
+    },
+    {
+      label: 'Monte Alegre',
+      value: 'Monte Alegre',
+    },
+    {
+      label: 'Touros',
+      value: 'Touros',
+    },
+    {
+      label: 'Mossoró',
+      value: 'Mossoró',
+    },
+  ];
 
   function handleGoBack() {
     history.push('/services');
@@ -100,7 +127,14 @@ export default function NewService({ match }) {
           name="customer"
           placeholder="Ex: Jacinto Pinto"
         />
-        <Input label="Cidade" name="city" placeholder="Ex: Macaiba" />
+        <AsyncSelect
+          name="Cidade"
+          label="Cidade"
+          placeholder="Selecione uma cidade"
+          cacheOptions
+          defaultOptions={selectCities}
+          loadOptions={selectCities}
+        />
         <Input label="Local" name="local" placeholder="Ex: Protocolo" />
         <Input
           label="Tipo de serviço"
