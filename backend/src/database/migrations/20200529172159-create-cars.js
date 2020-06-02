@@ -7,13 +7,18 @@ module.exports = {
         primaryKey: true,
         autoIncrement: true,
       },
-      car_model: {
+      name: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      model: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
       license_plate: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        unique: true,
       },
       created_at: {
         type: Sequelize.DATE,
