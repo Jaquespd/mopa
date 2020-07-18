@@ -129,8 +129,8 @@ export default function NewService({ match }) {
           placeholder="Ex: Jacinto Pinto"
         />
         <AsyncSelect
-          name="Cidade"
           label="Cidade"
+          name="city"
           placeholder="Selecione uma cidade"
           cacheOptions
           defaultOptions={selectCities}
