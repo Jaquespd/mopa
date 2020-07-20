@@ -67,6 +67,7 @@ routes.post(
 routes.get('/service/:service_id/problems', ServiceProblemController.show);
 
 routes.post('/files', upload.single('file'), FileController.store);
+routes.get('/files/:id', FileController.show);
 
 routes.get('/employees/:id', EmployeeController.show);
 routes.use(authMiddleware);
