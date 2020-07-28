@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Toast from 'react-native-simple-toast';
 
 import { useSelector } from 'react-redux';
-import { Alert } from 'react-native';
+import { Alert, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { format, parseISO } from 'date-fns';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -23,6 +23,7 @@ import {
   ActionButton,
   ActionButtonText,
   VerticalSeparator,
+  ScrollList,
 } from './styles';
 
 import api from '~/services/api';
@@ -96,97 +97,99 @@ export default function Detail({ navigation }) {
   return (
     <Background>
       <Container>
-        <Card style={{ elevation: 3 }}>
-          <CardHeader>
-            <Icon size={25} name="build" color="#4d85ee" />
-            <CardTitle>Informações do serviço</CardTitle>
-          </CardHeader>
+        <ScrollList>
+          <Card style={{ elevation: 3 }}>
+            <CardHeader>
+              <Icon size={25} name="build" color="#4d85ee" />
+              <CardTitle>Informações do serviço</CardTitle>
+            </CardHeader>
 
-          <Title>Chamado</Title>
-          <Subtitle>{customer}</Subtitle>
+            <Title>Chamado</Title>
+            <Subtitle>{customer}</Subtitle>
 
-          <Title>Descrição</Title>
-          <Subtitle>{description}</Subtitle>
+            <Title>Descrição</Title>
+            <Subtitle>{description}</Subtitle>
 
-          <Title>Parceiro</Title>
-          {partner.map((p) => (
-            <Subtitle>{p}</Subtitle>
-          ))}
+            <Title>Parceiro</Title>
+            {partner.map((p) => (
+              <Subtitle>{p}</Subtitle>
+            ))}
 
-          <Title>Carro</Title>
-          <Subtitle>{car}</Subtitle>
-        </Card>
+            <Title>Carro</Title>
+            <Subtitle>{car}</Subtitle>
+          </Card>
 
-        <Card style={{ elevation: 3 }}>
-          <CardHeader>
-            <Icon size={25} name="event" color="#4d85ee" />
-            <CardTitle>Situação do serviço</CardTitle>
-          </CardHeader>
+          <Card style={{ elevation: 3 }}>
+            <CardHeader>
+              <Icon size={25} name="event" color="#4d85ee" />
+              <CardTitle>Situação do serviço</CardTitle>
+            </CardHeader>
 
-          <Title>Status</Title>
-          <Subtitle>{status}</Subtitle>
+            <Title>Status</Title>
+            <Subtitle>{status}</Subtitle>
 
-          <DateRow>
-            <DateContainer>
-              <Title>Data de inicio</Title>
-              <Subtitle>{formattedStartDate}</Subtitle>
-            </DateContainer>
+            <DateRow>
+              <DateContainer>
+                <Title>Data de inicio</Title>
+                <Subtitle>{formattedStartDate}</Subtitle>
+              </DateContainer>
 
-            <DateContainer>
-              <Title>Data de conclusão</Title>
-              <Subtitle>{formattedEndDate}</Subtitle>
-            </DateContainer>
-          </DateRow>
-        </Card>
+              <DateContainer>
+                <Title>Data de conclusão</Title>
+                <Subtitle>{formattedEndDate}</Subtitle>
+              </DateContainer>
+            </DateRow>
+          </Card>
 
-        {!start_date ? (
-          <TakeOutButton loading={loading} onPress={handleTakeout}>
-            Iniciar Serviço
-          </TakeOutButton>
-        ) : (
-          <>
-            {!end_date && (
-              <Actions style={{ elevation: 3 }}>
-                <ActionButton
-                  onPress={() =>
-                    navigation.navigate('NewProblem', {
-                      deliveryId: customerService_id,
-                      employeeId: deliverymanId,
-                      serviceId: id,
-                    })
-                  }
-                >
-                  <Icon name="highlight-off" color="#E74040" size={25} />
-                  <ActionButtonText>Informar</ActionButtonText>
-                  <ActionButtonText>Problema</ActionButtonText>
-                </ActionButton>
-                <VerticalSeparator />
-                <ActionButton
-                  onPress={() =>
-                    navigation.navigate('Problems', { formattedId, problems })
-                  }
-                >
-                  <Icon name="info-outline" color="#E7BA40" size={25} />
-                  <ActionButtonText>Visualizar</ActionButtonText>
-                  <ActionButtonText>Problemas</ActionButtonText>
-                </ActionButton>
-                <VerticalSeparator />
-                <ActionButton
-                  onPress={() =>
-                    navigation.navigate('Confirm', {
-                      deliveryId: customerService_id,
-                      serviceId: id,
-                    })
-                  }
-                >
-                  <Icon name="alarm-on" color="#4d85ee" size={25} />
-                  <ActionButtonText>Confirmar</ActionButtonText>
-                  <ActionButtonText>Conclusão</ActionButtonText>
-                </ActionButton>
-              </Actions>
-            )}
-          </>
-        )}
+          {!start_date ? (
+            <TakeOutButton loading={loading} onPress={handleTakeout}>
+              Iniciar Serviço
+            </TakeOutButton>
+          ) : (
+            <>
+              {!end_date && (
+                <Actions style={{ elevation: 3 }}>
+                  <ActionButton
+                    onPress={() =>
+                      navigation.navigate('NewProblem', {
+                        deliveryId: customerService_id,
+                        employeeId: deliverymanId,
+                        serviceId: id,
+                      })
+                    }
+                  >
+                    <Icon name="highlight-off" color="#E74040" size={25} />
+                    <ActionButtonText>Informar</ActionButtonText>
+                    <ActionButtonText>Problema</ActionButtonText>
+                  </ActionButton>
+                  <VerticalSeparator />
+                  <ActionButton
+                    onPress={() =>
+                      navigation.navigate('Problems', { formattedId, problems })
+                    }
+                  >
+                    <Icon name="info-outline" color="#E7BA40" size={25} />
+                    <ActionButtonText>Visualizar</ActionButtonText>
+                    <ActionButtonText>Problemas</ActionButtonText>
+                  </ActionButton>
+                  <VerticalSeparator />
+                  <ActionButton
+                    onPress={() =>
+                      navigation.navigate('Confirm', {
+                        deliveryId: customerService_id,
+                        serviceId: id,
+                      })
+                    }
+                  >
+                    <Icon name="alarm-on" color="#4d85ee" size={25} />
+                    <ActionButtonText>Confirmar</ActionButtonText>
+                    <ActionButtonText>Conclusão</ActionButtonText>
+                  </ActionButton>
+                </Actions>
+              )}
+            </>
+          )}
+        </ScrollList>
       </Container>
     </Background>
   );

@@ -2,6 +2,10 @@ import styled from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
 import Button from '~/components/Button';
 
+export const ScrollList = styled.ScrollView.attrs({
+  showsVerticalScrollIndicator: false,
+})``;
+
 export const Container = styled.View`
   display: flex;
   flex-direction: column;

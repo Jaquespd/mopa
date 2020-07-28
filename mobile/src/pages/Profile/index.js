@@ -13,6 +13,7 @@ import {
   Title,
   SubTitle,
   LogoutButton,
+  ScrollList,
 } from './styles';
 
 export default function Profile() {
@@ -28,23 +29,25 @@ export default function Profile() {
     <>
       <StatusBar barStyle="dark-content" backgroundColor="#FFF" />
       <Container>
-        <AvatarContainer>
-          <Avatar name={profile.name} avatar={profile.avatar} />
-        </AvatarContainer>
+        <ScrollList>
+          <AvatarContainer>
+            <Avatar name={profile.name} avatar={profile.avatar} />
+          </AvatarContainer>
 
-        <Title>Nome Completo</Title>
-        <SubTitle>{profile.name}</SubTitle>
+          <Title>Nome Completo</Title>
+          <SubTitle>{profile.name}</SubTitle>
 
-        <Title>Telefone</Title>
-        <SubTitle>{profile.phone}</SubTitle>
+          <Title>Telefone</Title>
+          <SubTitle>{profile.phone}</SubTitle>
 
-        <Title>Email</Title>
-        <SubTitle>{profile.email}</SubTitle>
+          <Title>Email</Title>
+          <SubTitle>{profile.email}</SubTitle>
 
-        <Title>Data de cadastro</Title>
-        <SubTitle>{formattedData}</SubTitle>
+          <Title>Data de cadastro</Title>
+          <SubTitle>{formattedData}</SubTitle>
 
-        <LogoutButton onPress={handleLogout}>Logout</LogoutButton>
+          <LogoutButton onPress={handleLogout}>Logout</LogoutButton>
+        </ScrollList>
       </Container>
     </>
   );

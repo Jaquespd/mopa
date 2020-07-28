@@ -37,12 +37,13 @@ export default function LookCustomerService({ delivery, closeCallback }) {
   function handleCloseByClick(e) {
     if (e.target.id === 'look-delivery-container') closeCallback();
   }
+  console.log(services);
 
   return (
     <Container id="look-delivery-container" onClick={handleCloseByClick}>
       <div>
         <Scroll>
-          <strong>Informações do atendimento</strong>
+          <strong>Informações do atendimento.</strong>
           <p>{car}</p>
           {services &&
             services.map((service) => {
@@ -56,9 +57,42 @@ export default function LookCustomerService({ delivery, closeCallback }) {
                   {service.description && (
                     <p>Descrição: {service.description}</p>
                   )}
+                  {service.situacion && (
+                    <p>Situação: {service.situacion.text}</p>
+                  )}
+
+                  {(service.CustomerServiceService.start_date ||
+                    service.CustomerServiceService.end_date ||
+                    service.CustomerServiceService.canceled_at) && (
+                    <>
+                      <hr />
+                      <p>
+                        <strong>Datas</strong>
+                      </p>
+                    </>
+                  )}
+
+                  {service.CustomerServiceService.signature_id && (
+                    <>
+                      <hr />
+                      <strong>Assinatura do destinatário</strong>
+                      <img
+                        src={service.CustomerServiceService.signature_id}
+                        alt="Assinatura"
+                      />
+                    </>
+                  )}
                 </div>
               );
             })}
+
+          {signature && (
+            <>
+              <hr />
+              <strong>Assinatura do destinatário</strong>
+              <img src={signature.url} alt="Assinatura" />
+            </>
+          )}
 
           {(start_date || end_date || canceled_at) && (
             <>
@@ -97,14 +131,6 @@ export default function LookCustomerService({ delivery, closeCallback }) {
                   </span>
                 </div>
               ))}
-            </>
-          )}
-
-          {signature && (
-            <>
-              <hr />
-              <strong>Assinatura do destinatário</strong>
-              <img src={signature.url} alt="Assinatura" />
             </>
           )}
         </Scroll>

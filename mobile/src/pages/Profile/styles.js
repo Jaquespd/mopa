@@ -2,6 +2,12 @@ import styled from 'styled-components/native';
 import LetterAvatar from '~/components/Avatar';
 import Button from '~/components/Button';
 
+export const ScrollList = styled.ScrollView.attrs({
+  showsVerticalScrollIndicator: false,
+})`
+  flex: 1;
+`;
+
 export const Container = styled.View`
   flex: 1;
   background-color: #fff;
