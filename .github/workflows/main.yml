@@ -43,3 +43,22 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         source: ".,!node_modules"
         target: "~app/mopa"
+
+    - name: Install dependencies on Digital Ocean
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        port: ${{ secrets.SSH_PORT }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          cd ~/app/mopa/backend
+          yarn
+          yarn build
+          yarn sequelize db:migrate
+          yarn sequelize db:seed:all
+          pm2 restart server
+          cd ~/app/mopa/frontend
+          yarn build
+          yarn start
+          
