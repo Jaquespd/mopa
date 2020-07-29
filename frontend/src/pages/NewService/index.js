@@ -48,24 +48,24 @@ export default function NewService({ match }) {
 
   const selectCities = [
     {
-      label: 'Macaíba',
-      value: 'Macaíba',
+      label: 'PGJ',
+      value: 'PGJ',
     },
     {
-      label: 'Goianinha',
-      value: 'Goianinha',
+      label: 'Gaeco',
+      value: 'Gaeco',
     },
     {
-      label: 'Monte Alegre',
-      value: 'Monte Alegre',
+      label: 'Anexo I',
+      value: 'Anexo I',
     },
     {
-      label: 'Touros',
-      value: 'Touros',
+      label: 'Tororos',
+      value: 'Tororos',
     },
     {
-      label: 'Mossoró',
-      value: 'Mossoró',
+      label: 'Anexo DADM',
+      value: 'Anexo DADM',
     },
   ];
 
