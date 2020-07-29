@@ -60,4 +60,5 @@ jobs:
           pm2 restart server
           cd ~/app/mopa/frontend
           yarn build
+          pm2 restart mopa-admin
           
