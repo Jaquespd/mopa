@@ -42,7 +42,7 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         key: ${{ secrets.SSH_KEY }}
         source: ".,!node_modules"
-        target: "~app/mopa"
+        target: "~/app/mopa"
 
     - name: Install dependencies on Digital Ocean
       uses: appleboy/ssh-action@master
@@ -60,5 +60,4 @@ jobs:
           pm2 restart server
           cd ~/app/mopa/frontend
           yarn build
-          yarn start
           
