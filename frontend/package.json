@@ -14,7 +14,7 @@
     "express": "^4.17.1",
     "global": "^4.4.0",
     "history": "^4.10.1",
-    "immer": "^6.0.2",
+    "immer": "^9.0.6",
     "netlify-cli": "^2.58.0",
     "polished": "^3.5.1",
     "prop-types": "^15.7.2",
